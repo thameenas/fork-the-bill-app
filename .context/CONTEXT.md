@@ -70,12 +70,6 @@ Data models are defined in `src/types/index.ts`, distinguishing between backend 
 *   **`ClaimItemRequest`**: For claiming an item.
     *   `personId: string`
 
-### Frontend Internal Types (Adapter for UI)
-*   **`Item`**: Similar to `ItemResponse`, but `claimedBy` stores *person names* for display.
-*   **`Person`**: Similar to `PersonResponse`, but `isFinished: boolean` (normalized boolean naming).
-*   **`Expense`**: Similar to `ExpenseResponse`, but uses frontend `Item` and `Person` types.
-*   **`ExpenseSummary`**: Aggregates an `Expense` object with a `splitSummary` map (`[personName: string]: number`).
-*   **`ApiError`**: Standard error response structure (`timestamp`, `status`, `error`, `message`, `path`).
 
 ## API & Interfaces
 The application interacts with a backend API (defaulting to `http://localhost:8080`, configurable via `NEXT_PUBLIC_API_BASE_URL`). All API calls are made via an Axios instance configured in `src/api/client.ts`.
@@ -142,7 +136,7 @@ The application interacts with a backend API (defaulting to `http://localhost:80
 
 ### Environment Variables:
 *   **`NEXT_PUBLIC_API_BASE_URL`**: The base URL for the backend API.
-    *   Configured in `.env.local`.
+    *   Configured in env file.
     *   Default value is `http://localhost:8080` if not set, as defined in `env.config.ts`.
     *   Accessible on both client and server sides due to the `NEXT_PUBLIC_` prefix.
 
